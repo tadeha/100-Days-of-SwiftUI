@@ -5,7 +5,7 @@
 //  Created by Tadeh Alexani on 4/24/20.
 //  Copyright © 2020 Alexani. All rights reserved.
 //
-
+/*
 import SwiftUI
 
 struct SecondView: View {
@@ -67,3 +67,4 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
   }
 }
+*/
