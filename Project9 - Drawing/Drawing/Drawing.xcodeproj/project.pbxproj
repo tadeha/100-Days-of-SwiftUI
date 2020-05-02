@@ -13,6 +13,8 @@
 		6D5D2CCE245C4DA1005C2694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D5D2CCD245C4DA1005C2694 /* Assets.xcassets */; };
 		6D5D2CD1245C4DA1005C2694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D5D2CD0245C4DA1005C2694 /* Preview Assets.xcassets */; };
 		6D5D2CD4245C4DA1005C2694 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D5D2CD2245C4DA1005C2694 /* LaunchScreen.storyboard */; };
+		6D6A4E39245DC1050041EF9A /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A4E38245DC1050041EF9A /* FlowerView.swift */; };
+		6D6A4E3B245DC3C80041EF9A /* ColorCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6A4E3A245DC3C80041EF9A /* ColorCycleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6D5D2CD0245C4DA1005C2694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6D5D2CD3245C4DA1005C2694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D5D2CD5245C4DA1005C2694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D6A4E38245DC1050041EF9A /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
+		6D6A4E3A245DC3C80041EF9A /* ColorCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCycleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				6D5D2CC7245C4D9F005C2694 /* AppDelegate.swift */,
 				6D5D2CC9245C4D9F005C2694 /* SceneDelegate.swift */,
 				6D5D2CCB245C4D9F005C2694 /* ContentView.swift */,
+				6D6A4E3A245DC3C80041EF9A /* ColorCycleView.swift */,
+				6D6A4E38245DC1050041EF9A /* FlowerView.swift */,
 				6D5D2CCD245C4DA1005C2694 /* Assets.xcassets */,
 				6D5D2CD2245C4DA1005C2694 /* LaunchScreen.storyboard */,
 				6D5D2CD5245C4DA1005C2694 /* Info.plist */,
@@ -146,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6A4E3B245DC3C80041EF9A /* ColorCycleView.swift in Sources */,
 				6D5D2CC8245C4D9F005C2694 /* AppDelegate.swift in Sources */,
+				6D6A4E39245DC1050041EF9A /* FlowerView.swift in Sources */,
 				6D5D2CCA245C4D9F005C2694 /* SceneDelegate.swift in Sources */,
 				6D5D2CCC245C4D9F005C2694 /* ContentView.swift in Sources */,
 			);
