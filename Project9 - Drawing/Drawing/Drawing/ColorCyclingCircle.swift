@@ -1,5 +1,5 @@
 //
-//  ColorCycleView.swift
+//  ColorCyclingCircle.swift
 //  Drawing
 //
 //  Created by Tadeh Alexani on 5/2/20.
@@ -15,7 +15,7 @@ struct ColorCyclingCircle: View {
   var body: some View {
     ZStack {
       ForEach(0..<steps) { value in
-        Circle()
+        Rectangle()
           .inset(by: CGFloat(value))
           .strokeBorder(LinearGradient(gradient: Gradient(colors: [
               self.color(for: value, brightness: 1),
@@ -37,7 +37,7 @@ struct ColorCyclingCircle: View {
   }
 }
 
-struct ColorCycleView: View {
+struct ColorCyclingCircleView: View {
   @State private var colorCycle = 0.0
   
   var body: some View {
@@ -50,8 +50,8 @@ struct ColorCycleView: View {
   }
 }
 
-struct ColorCycleView_Previews: PreviewProvider {
+struct ColorCyclingCircle_Previews: PreviewProvider {
   static var previews: some View {
-    ColorCycleView()
+    ColorCyclingCircle()
   }
 }
