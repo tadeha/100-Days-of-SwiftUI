@@ -30,11 +30,11 @@ struct ContentView: View {
   @State private var scoreTitle = ""
   @State private var scoreMessage = ""
   @State private var userScore = 0
-  
-  let animationLength = 1.0
-  
-  @State private var opacities = [ 1.0, 1.0, 1.0 ]
-  @State private var rotateAmounts = [ 0.0, 0.0, 0.0 ]
+  @State private var userTapped = 0
+  @State private var animationAmount = 0.0
+  @State private var opacity = 1.0
+  @State private var offset = CGFloat.zero
+  @State private var disabled = false
   
   @State var wrongAttempt: Bool = false
   
@@ -55,16 +55,33 @@ struct ContentView: View {
         
         ForEach(0 ..< 3) { number in
           Button(action: {
-            self.flagTapped(number)
+            if number == self.correctAnswer {
+              self.flagTapped(number)
+              self.userTapped = number
+              withAnimation(.easeInOut(duration: 2)) {
+                self.animationAmount += 360
+                self.opacity -= 0.75
+              }
+            } else {
+              self.flagTapped(number)
+              self.userTapped = number
+              withAnimation(.easeInOut(duration: 0.5)) {
+                self.offset = 200
+              }
+            }
+            self.disabled = true
           }) {
             FlagImage(name: self.countries[number])
           }
-          .offset(x: self.wrongAttempt ? -10 : 0)
-          .animation(Animation.default.repeatCount(5))
-          .rotation3DEffect(.degrees(self.rotateAmounts[number]), axis: (x: 0, y: 1, z: 0))
-          .opacity(self.opacities[number])
-          .animation(Animation.easeIn(duration: self.animationLength))
+          .rotation3DEffect(.degrees(self.animationAmount), axis: (x: 0, y: number == self.userTapped ? 1 : 0, z: 0))
+              .offset(x: number != self.correctAnswer ? self.offset : .zero, y: .zero)
+              .clipped()
+              .opacity(number != self.userTapped ? self.opacity : 1.0)
+              .disabled(self.disabled)
+          
+
         }
+        
         
         Text("Your Score is \(userScore)")
           .foregroundColor(.white)
@@ -80,30 +97,17 @@ struct ContentView: View {
   }
   
   func askQuestion() {
+    self.disabled = false
+    self.opacity = 1
+    self.offset = .zero
     countries.shuffle()
     correctAnswer = Int.random(in: 0...2)
-    opacities = [ 1.0, 1.0, 1.0 ]
-    rotateAmounts = [ 0.0, 0.0, 0.0 ]
     wrongAttempt = false
   }
   
   func flagTapped(_ number: Int) {
     
     if number == correctAnswer {
-      rotateAmounts[number] = 360
-      
-      rotateAmounts.indices.forEach{
-        if $0 != correctAnswer {
-          rotateAmounts[$0] = 0
-        }
-      }
-      
-      opacities.indices.forEach{
-        if $0 != correctAnswer {
-          opacities[$0] = 0.25
-        }
-      }
-      
       scoreTitle = "Correct Answer"
       userScore += 1
       scoreMessage = "Congrats! Your Score is \(userScore)."
@@ -114,7 +118,7 @@ struct ContentView: View {
       scoreMessage = "Wrong! That’s the flag of \(countries[number])."
     }
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) { self.showingScore = true}
+    self.showingScore = true
   }
   
 }
