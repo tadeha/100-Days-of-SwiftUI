@@ -16,7 +16,7 @@ class Expenses: ObservableObject {
   @Published var items = [ExpenseItem]() {
     didSet {
       let encoder = JSONEncoder()
-      
+  
       if let encoded = try? encoder.encode(items) {
         UserDefaults.standard.set(encoded, forKey: "Items")
       }
@@ -24,8 +24,8 @@ class Expenses: ObservableObject {
   }
   
   init() {
+    let decoder = JSONDecoder()
     if let items = UserDefaults.standard.data(forKey: "Items") {
-      let decoder = JSONDecoder()
       if let decoded = try? decoder.decode([ExpenseItem].self, from: items) {
         self.items = decoded
         return

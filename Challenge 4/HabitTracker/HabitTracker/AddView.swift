@@ -28,12 +28,13 @@ struct AddView: View {
         }
       }
         
-      .navigationBarTitle("Add new activity")
+      .navigationBarTitle("Add new activity", displayMode: .inline)
         
       .navigationBarItems(trailing: Button(action: {
         if self.title != "" {
           let item = Activity(title: self.title, description: self.description)
           self.activities.items.append(item)
+          self.activities.items = self.activities.items
           self.presentationMode.wrappedValue.dismiss()
         } else {
           self.showingAlert = true
@@ -43,7 +44,7 @@ struct AddView: View {
       }))
         
       .alert(isPresented: $showingAlert) {
-          Alert(title: Text("Title Error"), message: Text("Please enter a title for your activity"), dismissButton: .default(Text("OK")))
+          Alert(title: Text("Title is Required!"), message: Text("Please enter a title for your activity."), dismissButton: .default(Text("OK")))
       }
       
     }

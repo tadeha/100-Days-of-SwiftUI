@@ -14,6 +14,7 @@ struct Activity: Codable, Identifiable {
   let id = UUID()
   let title: String
   let description: String
+  var completionCount: Int = 0
 }
 
 class Activities: ObservableObject {
@@ -28,13 +29,12 @@ class Activities: ObservableObject {
   
   init() {
     let decoder = JSONDecoder()
-    if let data = UserDefaults.standard.data(forKey: userDefaultKey) {
-      if let decoded = try? decoder.decode([Activity].self, from: data) {
+    if let items = UserDefaults.standard.data(forKey: userDefaultKey) {
+      if let decoded = try? decoder.decode([Activity].self, from: items) {
         self.items = decoded
         return
       }
     }
-    
     self.items = []
   }
 }

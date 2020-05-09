@@ -15,7 +15,7 @@
 		6D2FEBE22465B10D00220B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2FEBE02465B10D00220B28 /* LaunchScreen.storyboard */; };
 		6D2FEBEA2465B14400220B28 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2FEBE92465B14400220B28 /* Model.swift */; };
 		6D2FEBEC2465B3B900220B28 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2FEBEB2465B3B900220B28 /* ActivitiesView.swift */; };
-		6D2FEBEE2465B50E00220B28 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2FEBED2465B50E00220B28 /* ActivityDetailView.swift */; };
+		6D2FEBEE2465B50E00220B28 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2FEBED2465B50E00220B28 /* ActivityView.swift */; };
 		6D2FEBF02465B66A00220B28 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2FEBEF2465B66A00220B28 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		6D2FEBE32465B10D00220B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D2FEBE92465B14400220B28 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6D2FEBEB2465B3B900220B28 /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
-		6D2FEBED2465B50E00220B28 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
+		6D2FEBED2465B50E00220B28 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		6D2FEBEF2465B66A00220B28 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,7 @@
 				6D2FEBD92465B10600220B28 /* ContentView.swift */,
 				6D2FEBE92465B14400220B28 /* Model.swift */,
 				6D2FEBEB2465B3B900220B28 /* ActivitiesView.swift */,
-				6D2FEBED2465B50E00220B28 /* ActivityDetailView.swift */,
+				6D2FEBED2465B50E00220B28 /* ActivityView.swift */,
 				6D2FEBEF2465B66A00220B28 /* AddView.swift */,
 				6D2FEBDB2465B10D00220B28 /* Assets.xcassets */,
 				6D2FEBE02465B10D00220B28 /* LaunchScreen.storyboard */,
@@ -161,7 +161,7 @@
 				6D2FEBF02465B66A00220B28 /* AddView.swift in Sources */,
 				6D2FEBD62465B10600220B28 /* AppDelegate.swift in Sources */,
 				6D2FEBEC2465B3B900220B28 /* ActivitiesView.swift in Sources */,
-				6D2FEBEE2465B50E00220B28 /* ActivityDetailView.swift in Sources */,
+				6D2FEBEE2465B50E00220B28 /* ActivityView.swift in Sources */,
 				6D2FEBD82465B10600220B28 /* SceneDelegate.swift in Sources */,
 				6D2FEBEA2465B14400220B28 /* Model.swift in Sources */,
 				6D2FEBDA2465B10600220B28 /* ContentView.swift in Sources */,

@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
   
   @ObservedObject var expenses = Expenses()
+  @Environment(\.presentationMode) var presentationMode
   @State private var showingAddExpense = false
   
   var body: some View {
@@ -47,8 +48,9 @@ struct ContentView: View {
     }
   }
   
-  func removeItems(at offseets: IndexSet) {
-    expenses.items.remove(atOffsets: offseets)
+  func removeItems(at offsets: IndexSet) {
+    expenses.items.remove(atOffsets: offsets)
+    expenses.items = expenses.items
   }
   
 }

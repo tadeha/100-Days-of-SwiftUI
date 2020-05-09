@@ -11,34 +11,44 @@ import SwiftUI
 struct ActivitiesView: View {
   
   @ObservedObject var activities = Activities()
+  @Environment(\.presentationMode) var presentationMode
   @State private var showingAddActivity = false
   
   var body: some View {
     NavigationView {
       List() {
         ForEach(activities.items) { activity in
-          NavigationLink(destination: Text("Test")) {
+          NavigationLink(destination: ActivityView(activities: self.activities, activity: activity)) {
             HStack {
               Text(activity.title)
             }
           }
         }
+      .onDelete(perform: removeItems)
       }
-    .navigationBarTitle("HabitTracker")
-    .navigationBarItems(trailing: Button(action: {
-        self.showingAddActivity = true
-      }, label: {
-        Image(systemName: "plus")
-      }))
-    .sheet(isPresented: $showingAddActivity) {
-      AddView(activities: self.activities)
+      .navigationBarTitle("HabitTracker")
+      .navigationBarItems(leading: EditButton(), trailing:
+        
+        Button(action: {
+          self.showingAddActivity = true
+        }, label: {
+          Image(systemName: "plus")
+        })
+      )
+        .sheet(isPresented: $showingAddActivity) {
+          AddView(activities: self.activities)
+      }
     }
-    }
+  }
+  
+  func removeItems(at offsets: IndexSet) {
+    activities.items.remove(atOffsets: offsets)
+    activities.items = activities.items
   }
 }
 
 struct ActivitiesView_Previews: PreviewProvider {
   static var previews: some View {
-    ActivitiesView()
+    ActivitiesView(activities: Activities())
   }
 }
