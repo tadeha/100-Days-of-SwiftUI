@@ -29,6 +29,9 @@ class User: ObservableObject, Codable {
 }
 */
 
+// We should always change our user interface on the main thread.
+// SwiftUI is smart enough to be a little flexible here, but it's still a good idea to use the main thread for changing any data that is directly shown in the UI.
+
 struct ContentView: View {
   
   @ObservedObject var order = Order()
@@ -37,24 +40,24 @@ struct ContentView: View {
     NavigationView {
       Form {
         Section {
-          Picker("Select Your Cupcake Type", selection: $order.type) {
-            ForEach(0 ..< Order.types.count, id: \.self) {
-              Text(Order.types[$0])
+          Picker("Select Your Cupcake Type", selection: $order.cupcakeOrder.type) {
+            ForEach(0 ..< CupcakeOrder.types.count, id: \.self) {
+              Text(CupcakeOrder.types[$0])
             }
           }
-          Stepper(value: $order.quantity, in: 3...20) {
-            Text("Number of cakes: \(order.quantity)")
+          Stepper(value: $order.cupcakeOrder.quantity, in: 3...20) {
+            Text("Number of cakes: \(order.cupcakeOrder.quantity)")
           }
         }
         Section {
-          Toggle(isOn: $order.specialRequestEnabled.animation()) {
+          Toggle(isOn: $order.cupcakeOrder.specialRequestEnabled.animation()) {
             Text("Any special requests?")
           }
-          if order.specialRequestEnabled {
-            Toggle(isOn: $order.extraFrosting) {
+          if order.cupcakeOrder.specialRequestEnabled {
+            Toggle(isOn: $order.cupcakeOrder.extraFrosting) {
               Text("Add extra frosting")
             }
-            Toggle(isOn: $order.addSprinkles) {
+            Toggle(isOn: $order.cupcakeOrder.addSprinkles) {
               Text("Add extra sprinkles")
             }
           }

@@ -68,8 +68,8 @@
 			children = (
 				6D677D5D24682F0600271B66 /* AppDelegate.swift */,
 				6D677D5F24682F0600271B66 /* SceneDelegate.swift */,
-				6D677D6124682F0600271B66 /* ContentView.swift */,
 				6D0395042469606100ECB074 /* Order.swift */,
+				6D677D6124682F0600271B66 /* ContentView.swift */,
 				6D0395062469638F00ECB074 /* AddressView.swift */,
 				6D039508246964C400ECB074 /* CheckoutView.swift */,
 				6D677D73246833D600271B66 /* SongsList.swift */,

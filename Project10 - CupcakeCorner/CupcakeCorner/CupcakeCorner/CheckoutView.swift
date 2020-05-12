@@ -11,6 +11,9 @@ import SwiftUI
 struct CheckoutView: View {
   
   @ObservedObject var order: Order
+  @State private var alertTitle = ""
+  @State private var alertMessage = ""
+  @State private var showingAlert = false
   
   var body: some View {
     GeometryReader { geo in
@@ -21,12 +24,12 @@ struct CheckoutView: View {
             .scaledToFit()
             .frame(width: geo.size.width)
           
-          Text("Your total is $\(self.order.cost, specifier: "%.2f")")
+          Text("Your total is $\(self.order.cupcakeOrder.cost, specifier: "%.2f")")
             .font(.title)
             .fontWeight(.bold)
           
           Button("Place Order") {
-            // place the order
+            self.placeOrder()
           }
           .frame(width: geo.size.width * 0.5, height: 44)
           .background(Color.green)
@@ -36,8 +39,45 @@ struct CheckoutView: View {
         .frame(maxWidth: .infinity)
         .padding([.horizontal])
       }
+      .navigationBarTitle("Check out", displayMode: .inline)
+      .alert(isPresented: self.$showingAlert) {
+        Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: .default(Text("OK")))
+      }
     }
-    .navigationBarTitle("Check out", displayMode: .inline)
+  }
+  
+  func placeOrder() {
+    
+    guard let encoded = try? JSONEncoder().encode(order.cupcakeOrder) else {
+      print("Failed to encode order")
+      return
+    }
+    
+    let url = URL(string: "https://reqres.in/api/cupcakes")!
+    var request = URLRequest(url: url)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpMethod = "POST"
+    request.httpBody = encoded
+    
+    URLSession.shared.dataTask(with: request) {
+      data, response, error in
+      guard let data = data else {
+        self.alertTitle = "Error Occured"
+        self.alertMessage = error?.localizedDescription ?? "Unknown Error"
+        self.showingAlert = true
+        return
+      }
+      if let decodedOrder = try? JSONDecoder().decode(CupcakeOrder.self, from: data) {
+        self.alertTitle = "Thank you"
+        self.alertMessage = "Your order for \(decodedOrder.quantity)x \(CupcakeOrder.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+        self.showingAlert = true
+      } else {
+        self.alertTitle = "Error Occured"
+        self.alertMessage = "Invalid response from server"
+        self.showingAlert = true
+      }
+      
+    }.resume()
   }
 }
 
