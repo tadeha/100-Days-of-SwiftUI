@@ -19,6 +19,8 @@ struct AddBookView: View {
   @State private var review = ""
   @State private var rating = 3
   
+  @State private var showingAlert = false
+  
   let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
   
   var body: some View {
@@ -43,21 +45,29 @@ struct AddBookView: View {
         
         Section {
           Button("Save") {
-            let book = Book(context: self.moc)
-            
-            book.title = self.title
-            book.author = self.author
-            book.genre = self.genre
-            book.rating = Int16(self.rating)
-            book.review = self.review
-            
-            try? self.moc.save()
-            
-            self.presentationMode.wrappedValue.dismiss()
+            if self.genre.isEmpty {
+              self.showingAlert = true
+            } else {
+              let book = Book(context: self.moc)
+              
+              book.title = self.title
+              book.author = self.author
+              book.genre = self.genre
+              book.rating = Int16(self.rating)
+              book.review = self.review
+              book.date = Date()
+              
+              try? self.moc.save()
+              
+              self.presentationMode.wrappedValue.dismiss()
+            }
           }
         }
       }
       .navigationBarTitle("Add Book", displayMode: .inline)
+      .alert(isPresented: $showingAlert) {
+        Alert(title: Text("Error Saving"), message: Text("Please choose a Genre for the book"), dismissButton: .default(Text("OK")))
+      }
     }
   }
 }
