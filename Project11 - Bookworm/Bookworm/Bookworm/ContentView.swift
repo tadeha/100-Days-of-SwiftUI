@@ -11,7 +11,10 @@ import SwiftUI
 struct ContentView: View {
   
   @Environment(\.managedObjectContext) var moc
-  @FetchRequest(entity: Book.entity(), sortDescriptors: []) var books: FetchedResults<Book>
+  @FetchRequest(entity: Book.entity(), sortDescriptors: [
+    NSSortDescriptor(keyPath: \Book.title, ascending: true)
+    //    NSSortDescriptor(keyPath: \Book.author, ascending: true)
+  ]) var books: FetchedResults<Book>
   
   @State private var showingAddBook = false
   
@@ -19,7 +22,7 @@ struct ContentView: View {
     NavigationView {
       List {
         ForEach(self.books, id:\.self) { book in
-          NavigationLink(destination: Text(book.title ?? "Unknown Author")) {
+          NavigationLink(destination: DetailView(book: book)) {
             
             EmojiRatingView(rating: book.rating)
               .font(.largeTitle)
@@ -32,10 +35,12 @@ struct ContentView: View {
             }
           }
         }
+        .onDelete(perform: deleteBooks)
       }
-      
+        
       .navigationBarTitle("Bookworm")
-        .navigationBarItems(trailing: Button(action: {
+      .navigationBarItems(leading:
+        EditButton(), trailing: Button(action: {
           self.showingAddBook.toggle()
         }, label: {
           Image(systemName: "plus")
@@ -45,6 +50,16 @@ struct ContentView: View {
       }
     }
   }
+  
+  func deleteBooks(at offsets: IndexSet) {
+    for offset in offsets {
+      let book = books[offset]
+      moc.delete(book)
+    }
+    
+    try? moc.save()
+  }
+  
 }
 
 struct ContentView_Previews: PreviewProvider {
