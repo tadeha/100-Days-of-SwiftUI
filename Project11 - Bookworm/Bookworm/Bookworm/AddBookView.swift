@@ -57,7 +57,9 @@ struct AddBookView: View {
               book.review = self.review
               book.date = Date()
               
-              try? self.moc.save()
+              if moc.hasChanges {
+                try? self.moc.save()
+              }
               
               self.presentationMode.wrappedValue.dismiss()
             }

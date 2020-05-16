@@ -57,8 +57,9 @@ struct ContentView: View {
       let book = books[offset]
       moc.delete(book)
     }
-    
-    try? moc.save()
+    if moc.hasChanges {
+      try? moc.save()
+    }
   }
   
 }

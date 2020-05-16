@@ -51,7 +51,10 @@ struct Training_ContentView: View {
         student.id = UUID()
         student.name = "\(chosenFirstName) \(chosenLastName)"
         
-        try? self.moc.save()
+        if moc.hasChanges {
+          try? self.moc.save()
+        }
+        
       }
     }
   }
