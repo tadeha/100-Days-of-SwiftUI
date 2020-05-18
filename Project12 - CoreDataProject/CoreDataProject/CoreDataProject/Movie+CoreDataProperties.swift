@@ -30,6 +30,10 @@ extension Movie {
     director ?? "Unknown Director"
   }
   
+  public var wrappedYear: String {
+    "\(Int(year))"
+  }
+  
   public var actorArray: [Actor] {
     
     let set = actors as? Set<Actor> ?? []
