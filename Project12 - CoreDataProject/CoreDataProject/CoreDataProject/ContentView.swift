@@ -28,7 +28,7 @@ struct ContentView: View {
         .padding()
 
       
-      FilteredList(filterKey: "year", filterValue: years[yearFilter]) { (movie: Movie) in
+      FilteredList(filterKey: "year", filterValue: years[yearFilter], filterOperator: .equal, sortDescriptors: [NSSortDescriptor(key: "year", ascending: true)]) { (movie: Movie) in
         VStack(spacing: 4) {
           HStack {
             VStack(alignment: .leading) {
