@@ -7,16 +7,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct DetailView: View {
   
-  var users: [User]
+  @Environment(\.managedObjectContext) var moc
   var user: User
   
   var body: some View {
     List {
-      Section(header: Text("About \(user.name)")) {
-        Text(user.about)
+      Section(header: Text("About \(user.wrappedName)")) {
+        Text(user.wrappedAbout)
       }
       
       Section(header: Text("More Info")) {
@@ -25,14 +26,14 @@ struct DetailView: View {
             Text("Company:")
               .fontWeight(.bold)
               .font(.headline)
-            Text(user.company)
+            Text(user.wrappedCompany)
           }
           
           HStack {
             Text("Email:")
               .fontWeight(.bold)
               .font(.headline)
-            Text(user.email)
+            Text(user.wrappedEmail)
           }
           HStack {
             Text("Age:")
@@ -44,29 +45,39 @@ struct DetailView: View {
             Text("Address:")
               .fontWeight(.bold)
               .font(.headline)
-            Text(user.address)
+            Text(user.wrappedAddress)
           }
         }
         .padding([.vertical])
       }
       
       Section(header: Text("Friends")) {
-        ForEach(user.friends, id: \.id) { friend in
-          NavigationLink(destination: DetailView(users: self.users, user: self.user(withId: friend.id) ?? self.user)) {
-            Text(friend.name)
+        
+        if user.friendsArray.count != 0 {
+          ForEach(user.friendsArray, id: \.wrappedId) { friend in
+            NavigationLink(destination: DetailView(user: self.getFriendUser(friend: friend))) {
+              Text(friend.wrappedName)
+            }
           }
+        } else {
+          Text("\(user.wrappedName) has no friends!")
+            .foregroundColor(.secondary)
         }
+        
       }
     }
-    .navigationBarTitle(Text(user.name), displayMode: .inline)
+    .navigationBarTitle(Text(user.wrappedName), displayMode: .inline)
   }
   
-  func user(withId id: String) -> User? {
-    if let user = users.first(where: { $0.id == id }) {
-      return user
-    } else {
-      return nil
+  func getFriendUser(friend: Friend) -> User {
+    let request: NSFetchRequest = User.fetchRequest()
+    request.predicate = NSPredicate(format: "id == %@", friend.wrappedId)
+    
+    guard let users = try? moc.fetch(request) else {
+      return User()
     }
+    
+    return users.first ?? User()
   }
 }
 

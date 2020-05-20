@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserStruct.swift
 //  FriendFace
 //
 //  Created by Tadeh Alexani on 5/20/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct UserStruct: Codable {
   
   enum CodingKeys: CodingKey {
     case id, name, age, company, email, address, about, registered, friends, isActive
