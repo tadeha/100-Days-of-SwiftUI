@@ -12,37 +12,8 @@ import CoreImage.CIFilterBuiltins
 
 struct ContentView: View {
   
-  @State private var image: Image?
-  
   var body: some View {
-    VStack {
-      image?
-        .resizable()
-        .scaledToFit()
-    }
-  .onAppear(perform: loadImage)
+    Text("Hello World")
   }
-  
-  func loadImage() {
-    guard let inputImg = UIImage(named: "example") else {
-      return
-    }
-    let beginImg = CIImage(image: inputImg)
-    
-    let context = CIContext()
-    let currentFilter = CIFilter.sepiaTone()
-    
-    currentFilter.inputImage = beginImg
-    currentFilter.intensity = 1
-    
-    guard let outputImg = currentFilter.outputImage else {
-      return
-    }
-    
-    if let cgimg = context.createCGImage(outputImg, from: outputImg.extent) {
-      let uiImg = UIImage(cgImage: cgimg)
-      image = Image(uiImage: uiImg)
-    }
-    
-  }
+
 }
