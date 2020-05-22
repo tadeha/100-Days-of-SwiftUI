@@ -201,15 +201,15 @@
   * Key points
   * Challenge
 * ✅`Day 61 - Time for Core Data`
-* `Day 62 - Project 13, part 1`
+* ✅`Day 62 - Project 13, part 1`
   * Instafilter: Introduction
   * How property wrappers become structs
   * Creating custom bindings in SwiftUI
   * Showing multiple options with ActionSheet
-* `Day 63 - Project 13, part 2`
+* ✅`Day 63 - Project 13, part 2`
   * Integrating Core Image with SwiftUI
   * Wrapping a UIViewController in a SwiftUI view
-* `Day 64 - Project 13, part 3`
+* ✅`Day 64 - Project 13, part 3`
   * Using coordinators to manage SwiftUI view controllers
   * How to save images to the user’s photo library
 * `Day 65 - Project 13, part 4`
