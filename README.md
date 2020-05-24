@@ -212,14 +212,14 @@
 * ✅`Day 64 - Project 13, part 3`
   * Using coordinators to manage SwiftUI view controllers
   * How to save images to the user’s photo library
-* `Day 65 - Project 13, part 4`
+* ✅`Day 65 - Project 13, part 4`
   * Building our basic UI
   * Importing an image into SwiftUI using UIImagePickerController
   * Basic image filtering using Core Image
-* `Day 66 - Project 13, part 5`
+* ✅`Day 66 - Project 13, part 5`
   * Customizing our filter using ActionSheet
   * Saving the filtered image using UIImageWriteToSavedPhotosAlbum()
-* `Day 67 - Project 13, part 6`
+* ✅`Day 67 - Project 13, part 6`
   * Instafilter: Wrap up
   * Review for Project 13: Instafilter
 * `Day 68 - Project 14, part 1`
