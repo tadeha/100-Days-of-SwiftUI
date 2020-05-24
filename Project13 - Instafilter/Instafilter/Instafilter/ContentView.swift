@@ -28,6 +28,7 @@ struct ContentView: View {
   @State private var showingFilterSheet = false
   @State private var inputImage: UIImage?
   @State private var proccessedImage: UIImage?
+  
   @State var currentFilter: CIFilter = CIFilter.sepiaTone()
   let context = CIContext()
   
