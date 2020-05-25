@@ -222,7 +222,7 @@
 * ✅`Day 67 - Project 13, part 6`
   * Instafilter: Wrap up
   * Review for Project 13: Instafilter
-* `Day 68 - Project 14, part 1`
+* ✅`Day 68 - Project 14, part 1`
   * Bucket List: Introduction
   * Adding conformance to Comparable for custom types
   * Writing data to the documents directory
