@@ -7,70 +7,45 @@
 //
 
 import SwiftUI
-
-struct LoadingView: View {
-  var body: some View {
-    Text("Loading")
-  }
-}
-
-struct SuccessView: View {
-  var body: some View {
-    Text("Success!")
-  }
-}
-
-struct FailedView: View {
-  var body: some View {
-    Text("Failed.")
-  }
-}
-
-struct User: Identifiable, Comparable {
-  let id = UUID()
-  let firstName: String
-  let lastName: String
-  
-  static func < (lhs: User, rhs: User) -> Bool {
-    lhs.lastName < rhs.lastName
-  }
-}
-
-enum LoadingStates {
-  case loading, success, failed
-}
+import LocalAuthentication
 
 struct ContentView: View {
   
-  let users = [
-    User(firstName: "Arnold", lastName: "Rimmer"),
-    User(firstName: "Kristine", lastName: "Kochanski"),
-    User(firstName: "David", lastName: "Lister"),
-  ]
-  
-  var loadingState: LoadingStates = .loading
-  
-  @State private var buttonTitle = "Tap Me"
+  @State private var isUnlocked = false
   
   var body: some View {
     VStack {
-      List(users) { user in
-        Text("\(user.lastName), \(user.firstName)")
-      }
-      Button(buttonTitle) {
-        let fileManager = FileManager()
-        fileManager.save("Test String", withName: "test.txt")
-        self.buttonTitle = fileManager.load(withName: "test.txt")!
-      }
-      if loadingState == .loading {
-        LoadingView()
-      } else if loadingState == .success {
-        SuccessView()
+      if isUnlocked {
+        MapView()
+          .edgesIgnoringSafeArea(.all)
       } else {
-        FailedView()
+        Text("Locked")
       }
     }
+    .onAppear(perform: authenticate)
     
+  }
+  
+  func authenticate() {
+    let context = LAContext()
+    var error: NSError?
+    
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+      let reason = "We need to unlock your data."
+      
+      context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+        
+        DispatchQueue.main.async {
+          if success {
+            self.isUnlocked = true
+          } else {
+            // there was a problem
+          }
+        }
+      }
+    } else {
+      // no biometrics
+    }
   }
 }
 
