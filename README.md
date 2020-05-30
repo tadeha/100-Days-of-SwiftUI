@@ -234,14 +234,14 @@
 * ✅`Day 70 - Project 14, part 3`
   * Advanced MKMapView with SwiftUI
   * Adding annotations to MKMapView
-* `Day 71 - Project 14, part 4`
+* ✅`Day 71 - Project 14, part 4`
   * Extending existing types to support ObservableObject
   * Downloading data from Wikipedia
   * Sorting Wikipedia results
-* `Day 72 - Project 14, part 5`
+* ✅`Day 72 - Project 14, part 5`
   * Making someone else’s class conform to Codable
   * Locking our UI behind Face ID
-* `Day 73 - Project 14, part 6`
+* ✅`Day 73 - Project 14, part 6`
   * Bucket List: Wrap up
   * Review for Project 14: Bucket List
 * `Day 74 - Project 15, part 1`
