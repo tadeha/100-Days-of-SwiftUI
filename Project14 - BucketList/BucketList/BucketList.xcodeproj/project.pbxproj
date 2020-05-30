@@ -21,6 +21,7 @@
 		6DAA604C247BD5DB00130E68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAA604B247BD5DB00130E68 /* Preview Assets.xcassets */; };
 		6DAA604F247BD5DB00130E68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAA604D247BD5DB00130E68 /* LaunchScreen.storyboard */; };
 		6DAA6057247BDD3E00130E68 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA6056247BDD3E00130E68 /* FileManager+Extension.swift */; };
+		6DF7BE5C2482A4DD008C4066 /* UnlockedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7BE5B2482A4DD008C4066 /* UnlockedMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		6DAA604E247BD5DB00130E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DAA6050247BD5DB00130E68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAA6056247BDD3E00130E68 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		6DF7BE5B2482A4DD008C4066 /* UnlockedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				6DAA6042247BD5D800130E68 /* AppDelegate.swift */,
 				6DAA6044247BD5D800130E68 /* SceneDelegate.swift */,
 				6DAA6046247BD5D800130E68 /* ContentView.swift */,
+				6DF7BE5B2482A4DD008C4066 /* UnlockedMapView.swift */,
 				6D1FB9AF247D481A00B2EB75 /* MapView.swift */,
 				6D21E2B424815729006076D8 /* EditView.swift */,
 				6D21E2B624815990006076D8 /* Result.swift */,
@@ -180,6 +183,7 @@
 				6DAA6045247BD5D800130E68 /* SceneDelegate.swift in Sources */,
 				6DAA6047247BD5D800130E68 /* ContentView.swift in Sources */,
 				6D21E2B92481605A006076D8 /* MKPointAnnotation-Codable.swift in Sources */,
+				6DF7BE5C2482A4DD008C4066 /* UnlockedMapView.swift in Sources */,
 				6DA3CBCA247E825C0025EFA0 /* ContentView_Day_69.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
