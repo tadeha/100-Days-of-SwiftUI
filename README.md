@@ -249,7 +249,7 @@
   * Identifying views with useful labels
   * Hiding and grouping accessibility data
   * Reading the value of controls
-* `Day 75 - Project 15, part 2`
+* ✅`Day 75 - Project 15, part 2`
   * Fixing Guess the Flag
   * Fixing Word Scramble
   * Fixing Bookworm
