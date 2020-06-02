@@ -30,7 +30,7 @@ struct ContentView: View {
     NavigationView {
       List(missions) { mission in
         NavigationLink(destination: MissionView(mission: mission, astronauts: self.astronauts)) {
-          Image(mission.image)
+          Image(decorative: mission.image)
             .resizable()
             .scaledToFit()
             .frame(width: 44, height: 44)
@@ -40,7 +40,10 @@ struct ContentView: View {
               .font(.headline)
             Text(self.showingCrews ? mission.crews : mission.formattedLaunchDate)
           }
+          .accessibilityElement(children: .ignore)
+          .accessibility(label: self.showingCrews ? Text("\(mission.displayName). Crew: \(mission.crews)") : Text("\(mission.displayName). \(mission.formattedLaunchDate)"))
         }
+        .accessibility(removeTraits: .isButton)
       }
       .navigationBarTitle("Moonshot")
       .navigationBarItems(trailing: Button("Toggle Details") {
