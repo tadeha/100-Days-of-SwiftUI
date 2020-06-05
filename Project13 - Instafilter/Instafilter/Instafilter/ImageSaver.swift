@@ -13,7 +13,9 @@ class ImageSaver: NSObject {
   var errorHandler: ((Error) -> Void)?
   
   func writeToPhotoAlbum(image: UIImage) {
-    UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+    if let jpegData = image.jpegData(compressionQuality: 0.8) {
+        try? jpegData.write(to: yourURL, options: [.atomicWrite, .completeFileProtection])
+    }
   }
   @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
     if let error = error {
