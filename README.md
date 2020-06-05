@@ -261,7 +261,7 @@
   * Key points
   * Challenge
 * ✅`Day 78 - Time for MapKit`
-* `Day 79 - Project 16, part 1`
+* ✅`Day 79 - Project 16, part 1`
   * Hot Prospects: Introduction
   * Reading custom values from the environment with @EnvironmentObject
   * Creating tabs with TabView and tabItem()
