@@ -256,11 +256,11 @@
 * ✅`Day 76 - Project 15, part 3`
   * Accessibility: Wrap up
   * Review for Project 15: Accessibility
-* `Day 77 - Milestone: Projects 13-15`
+* ✅`Day 77 - Milestone: Projects 13-15`
   * What you learned
   * Key points
   * Challenge
-* `Day 78 - Time for MapKit`
+* ✅`Day 78 - Time for MapKit`
 * `Day 79 - Project 16, part 1`
   * Hot Prospects: Introduction
   * Reading custom values from the environment with @EnvironmentObject
