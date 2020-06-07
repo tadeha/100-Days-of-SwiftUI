@@ -269,7 +269,7 @@
   * Understanding Swift’s Result type
   * Manually publishing ObservableObject changes
   * Controlling image interpolation in SwiftUI
-* `Day 81 - Project 16, part 3`
+* ✅`Day 81 - Project 16, part 3`
   * Creating context menus
   * Scheduling local notifications
   * Adding Swift package dependencies in Xcode
