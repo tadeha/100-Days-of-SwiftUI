@@ -1,27 +1,26 @@
 //
 //  ImageSaver.swift
-//  Instafilter
+//  Project13
 //
-//  Created by Tadeh Alexani on 5/24/20.
-//  Copyright © 2020 Alexani. All rights reserved.
+//  Created by Paul Hudson on 17/02/2020.
+//  Copyright © 2020 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 class ImageSaver: NSObject {
-  var successHandler: (() -> Void)?
-  var errorHandler: ((Error) -> Void)?
-  
-  func writeToPhotoAlbum(image: UIImage) {
-    if let jpegData = image.jpegData(compressionQuality: 0.8) {
-        try? jpegData.write(to: yourURL, options: [.atomicWrite, .completeFileProtection])
+    var successHandler: (() -> Void)?
+    var errorHandler: ((Error) -> Void)?
+
+    func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
     }
-  }
-  @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-    if let error = error {
-      errorHandler?(error)
-    } else {
-      successHandler?()
+
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            errorHandler?(error)
+        } else {
+            successHandler?()
+        }
     }
-  }
 }
