@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ProspectsView: View {
   
@@ -15,6 +16,10 @@ struct ProspectsView: View {
   }
   
   @EnvironmentObject var prospects: Prospects
+  @State private var showingScanner = false
+  @State private var alertTitle = ""
+  @State private var alertMessage = ""
+  @State private var showingAlert = false
   let filter: FilterType
   
   var title: String {
@@ -49,21 +54,49 @@ struct ProspectsView: View {
             Text(prospect.emailAddress)
               .foregroundColor(.secondary)
           }
+          .contextMenu {
+            Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
+              self.prospects.toggle(prospect)
+            }
+          }
         }
+      }
+      .sheet(isPresented: $showingScanner) {
+        CodeScannerView(codeTypes: [.qr],simulatedData: "Tadeh Alexani\nhi@TadehAlexani.com", completion: self.handleScan)
+      }
+      .alert(isPresented: $showingAlert) {
+        Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
       }
       .navigationBarTitle(title)
       .navigationBarItems(trailing: Button(action: {
-        
-        let prospect = Prospect()
-        prospect.name = "Tadeh Alexani"
-        prospect.emailAddress = "hi@TadehAlexani.com"
-        
-        self.prospects.people.append(prospect)
-        
+        self.showingScanner = true
       }, label: {
         Image(systemName: "qrcode.viewfinder")
         Text("Scan")
       }))
+    }
+  }
+  
+  func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+    showingScanner = false
+    switch result {
+      case .success(let code):
+        let details = code.components(separatedBy: "\n")
+        
+        guard details.count == 2 else {
+          return
+        }
+        
+        let prospect = Prospect()
+        prospect.name = details[0]
+        prospect.emailAddress = details[1]
+        
+        self.prospects.people.append(prospect)
+      
+      case .failure(let error):
+        self.showingAlert = true
+        self.alertTitle = "Error Occured"
+        self.alertMessage = error.localizedDescription
     }
   }
 }
