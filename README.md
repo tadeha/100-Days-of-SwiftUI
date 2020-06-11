@@ -281,10 +281,10 @@
   * Generating and scaling up a QR code
   * Scanning QR codes with SwiftUI
   * Adding options with a context menu
-* `Day 84 - Project 16, part 6`
+* ✅`Day 84 - Project 16, part 6`
   * Saving and loading data with UserDefaults
   * Posting notifications to the lock screen
-* `Day 85 - Project 16, part 7`
+* ✅`Day 85 - Project 16, part 7`
   * Hot Prospects: Wrap up
   * Review for Project 16: Hot Prospects
 * `Day 86 - Project 17, part 1`
