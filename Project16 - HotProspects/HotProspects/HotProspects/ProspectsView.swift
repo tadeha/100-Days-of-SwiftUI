@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CodeScanner
+import UserNotifications
 
 struct ProspectsView: View {
   
@@ -58,6 +59,12 @@ struct ProspectsView: View {
             Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
               self.prospects.toggle(prospect)
             }
+            
+            if !prospect.isContacted {
+              Button("Remind Me") {
+                self.addNotification(for: prospect)
+              }
+            }
           }
         }
       }
@@ -91,13 +98,48 @@ struct ProspectsView: View {
         prospect.name = details[0]
         prospect.emailAddress = details[1]
         
-        self.prospects.people.append(prospect)
+        self.prospects.add(prospect)
       
       case .failure(let error):
         self.showingAlert = true
         self.alertTitle = "Error Occured"
         self.alertMessage = error.localizedDescription
     }
+  }
+  
+  func addNotification(for prospect: Prospect) {
+    
+    let center = UNUserNotificationCenter.current()
+    
+    let addRequest = {
+      
+      let content = UNMutableNotificationContent()
+      content.title = "Contact \(prospect.name)"
+      content.subtitle = prospect.emailAddress
+      
+      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+      
+      let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+      
+      center.add(request)
+      
+    }
+    
+    center.getNotificationSettings { settings in
+      if settings.authorizationStatus == .authorized {
+        addRequest()
+      } else {
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+          if success {
+            addRequest()
+          } else if let error = error {
+            self.alertTitle = "Error Occured"
+            self.alertMessage = error.localizedDescription
+          }
+        }
+      }
+    }
+    
   }
 }
 
