@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
+// Encapsulation limits how much external objects can read and write values inside a class or a struct.
+
 import SwiftUI
 import CodeScanner
 import UserNotifications
@@ -21,6 +23,7 @@ struct ProspectsView: View {
   @State private var alertTitle = ""
   @State private var alertMessage = ""
   @State private var showingAlert = false
+  @State private var showingActionSheet = false
   let filter: FilterType
   
   var title: String {
@@ -49,11 +52,16 @@ struct ProspectsView: View {
     NavigationView {
       List {
         ForEach(filteredProspects) { prospect in
-          VStack(alignment: .leading) {
-            Text(prospect.name)
-              .font(.headline)
-            Text(prospect.emailAddress)
-              .foregroundColor(.secondary)
+          HStack {
+            if self.filter == .none {
+              prospect.isContacted ? Image(systemName: "person.crop.circle.badge.checkmark").foregroundColor(.green) : Image(systemName: "person.crop.circle.badge.xmark").foregroundColor(.red)
+            }
+            VStack(alignment: .leading) {
+              Text(prospect.name)
+                .font(.headline)
+              Text(prospect.emailAddress)
+                .foregroundColor(.secondary)
+            }
           }
           .contextMenu {
             Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted") {
@@ -74,13 +82,24 @@ struct ProspectsView: View {
       .alert(isPresented: $showingAlert) {
         Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
       }
+      .actionSheet(isPresented: $showingActionSheet) {
+        ActionSheet(title: Text("Choose your sort option:"), buttons: [
+          .default(Text("By Name")) { self.prospects.sort(by: .name) },
+          .default(Text("Most Recent")) { self.prospects.sort(by: .mostRecent) },
+          .cancel()
+        ])
+      }
       .navigationBarTitle(title)
-      .navigationBarItems(trailing: Button(action: {
-        self.showingScanner = true
-      }, label: {
-        Image(systemName: "qrcode.viewfinder")
-        Text("Scan")
-      }))
+      .navigationBarItems(leading:
+        Button("Sort") {
+          self.showingActionSheet = true
+        }
+        ,trailing: Button(action: {
+          self.showingScanner = true
+        }, label: {
+          Image(systemName: "qrcode.viewfinder")
+          Text("Scan")
+        }))
     }
   }
   

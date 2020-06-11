@@ -20,6 +20,7 @@
 		6D5A875F248A286700E088B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A875D248A286700E088B4 /* LaunchScreen.storyboard */; };
 		6D5A8767248A30B900E088B4 /* ContentView_Day_79.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A8766248A30B900E088B4 /* ContentView_Day_79.swift */; };
 		6D5D1BBF248BE4B200DE937F /* ContentView_Day_80.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5D1BBE248BE4B100DE937F /* ContentView_Day_80.swift */; };
+		6D7CB63824926E9200B3BB11 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7CB63724926E9200B3BB11 /* FileManager+Extension.swift */; };
 		6DC60B07248D2C6000C74473 /* ContentView_Day_81.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC60B06248D2C6000C74473 /* ContentView_Day_81.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		6D5A8760248A286700E088B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D5A8766248A30B900E088B4 /* ContentView_Day_79.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView_Day_79.swift; sourceTree = "<group>"; };
 		6D5D1BBE248BE4B100DE937F /* ContentView_Day_80.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView_Day_80.swift; sourceTree = "<group>"; };
+		6D7CB63724926E9200B3BB11 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		6DC60B06248D2C6000C74473 /* ContentView_Day_81.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView_Day_81.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				6D2ECDA0248FC779009F39FB /* ProspectsView.swift */,
 				6D2ECDA2248FC77E009F39FB /* MeView.swift */,
 				6D2ECDA4248FC92B009F39FB /* Prospect.swift */,
+				6D7CB63724926E9200B3BB11 /* FileManager+Extension.swift */,
 				6DC60B06248D2C6000C74473 /* ContentView_Day_81.swift */,
 				6D5D1BBE248BE4B100DE937F /* ContentView_Day_80.swift */,
 				6D5A8766248A30B900E088B4 /* ContentView_Day_79.swift */,
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D5A8753248A286400E088B4 /* AppDelegate.swift in Sources */,
+				6D7CB63824926E9200B3BB11 /* FileManager+Extension.swift in Sources */,
 				6D5A8767248A30B900E088B4 /* ContentView_Day_79.swift in Sources */,
 				6DC60B07248D2C6000C74473 /* ContentView_Day_81.swift in Sources */,
 				6D2ECDA1248FC779009F39FB /* ProspectsView.swift in Sources */,
