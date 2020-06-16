@@ -287,16 +287,16 @@
 * ✅`Day 85 - Project 16, part 7`
   * Hot Prospects: Wrap up
   * Review for Project 16: Hot Prospects
-* `Day 86 - Project 17, part 1`
+* ✅`Day 86 - Project 17, part 1`
   * Flashzilla: Introduction
   * How to use gestures in SwiftUI
   * Making vibrations with UINotificationFeedbackGenerator and Core Haptics
   * Disabling user interactivity with allowsHitTesting()
-* `Day 87 - Project 17, part 2`
+* ✅`Day 87 - Project 17, part 2`
   * Triggering events repeatedly using a timer
   * How to be notified when your SwiftUI app moves to the background
   * Supporting specific accessibility needs with SwiftUI
-* `Day 88 - Project 17, part 3`
+* ✅`Day 88 - Project 17, part 3`
   * Designing a single card view
   * Building a stack of cards
   * Moving views with DragGesture and offset()
