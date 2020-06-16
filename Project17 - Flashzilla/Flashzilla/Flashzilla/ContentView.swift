@@ -9,13 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
+  
+  let cards = [Card](repeating: Card.example, count: 10)
+  
+  var body: some View {
+    ZStack {
+      VStack {
+        ZStack {
+          ForEach(0..<cards.count, id: \.self) { index in
+            CardView(card: self.cards[index])
+              .stacked(at: index, in: self.cards.count)
+          }
+        }
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
