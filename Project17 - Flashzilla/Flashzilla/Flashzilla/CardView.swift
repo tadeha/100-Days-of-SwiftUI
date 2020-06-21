@@ -27,7 +27,7 @@ struct CardView: View {
   @State private var feedback = UINotificationFeedbackGenerator()
   
   // If closures are the last property in the struct Swift will enable trailing closure syntax automatically.
-  var removal: (() -> Void)? = nil
+  var removal: ((_ isAnswerWrong: Bool) -> Void)? = nil
   
   var body: some View {
     ZStack {
@@ -42,7 +42,7 @@ struct CardView: View {
           differentiateWithoutColor ?
             nil
             : RoundedRectangle(cornerRadius: 25)
-              .fill(offset.width > 0 ? Color.green : Color.red)
+              .fill(self.setColor(for: offset.width))
       )
         .shadow(radius: 10)
       
@@ -84,11 +84,13 @@ struct CardView: View {
           
           if self.offset.width > 0 {
             self.feedback.notificationOccurred(.success)
+            self.removal?(false)
+
           } else {
             self.feedback.notificationOccurred(.error)
+            self.removal?(true)
+
           }
-          
-          self.removal?()
           
         } else {
           self.offset = .zero
@@ -100,6 +102,16 @@ struct CardView: View {
     }
     .animation(.spring())
   }
+  
+  func setColor(for offset: CGFloat) -> Color {
+    if offset > 0 {
+      return .green
+    } else if offset < 0 {
+      return .red
+    }
+    return .white
+  }
+  
 }
 
 struct CardView_Previews: PreviewProvider {
