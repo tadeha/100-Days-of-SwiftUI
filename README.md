@@ -311,7 +311,7 @@
 * ✅`Day 91 - Project 17, part 6`
   * Flashzilla: Wrap up
   * Review for Project 17: Flashzilla
-* `Day 92 - Project 18, part 1`
+* ✅`Day 92 - Project 18, part 1`
   * Layout and geometry: Introduction
   * How layout works in SwiftUI
   * Alignment and alignment guides
