@@ -39,13 +39,18 @@ struct ContentView: View {
           .autocapitalization(.none)
           .padding()
         
-        List(usedWords, id: \.self) { word in
-          HStack {
-            Image(systemName: "\(word.count).circle")
-            Text(word)
+        GeometryReader { fullView in
+          List(self.usedWords, id: \.self) { word in
+            GeometryReader { geo in
+              HStack() {
+                Image(systemName: "\(word.count).circle")
+                  .foregroundColor(Color(red: Double((geo.frame(in: .global).maxY) / 800 ), green: 0.6, blue: 0.4))
+                Text(word)
+                Spacer()
+              }
+                .offset(x: max(0, (geo.frame(in: .global).maxY / fullView.size.height) * (geo.frame(in: .global).maxY) - 850), y: 0)
+            }
           }
-          .accessibilityElement(children: .ignore)
-          .accessibility(label: Text("\(word), \(word.count) letters"))
         }
         
         Text("Your Score is \(userScore)")

@@ -21,13 +21,21 @@ struct MissionView: View {
   let missions: [Mission] = Bundle.main.decode("missions.json")
   
   var body: some View {
-    GeometryReader { geometry in
+    GeometryReader { fullView in
       ScrollView(.vertical) {
         VStack {
-          Image(decorative: self.mission.image)
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: geometry.size.width * 0.7)
+          GeometryReader { geo in
+            HStack {
+              Spacer()
+              Image(self.mission.image)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: fullView.size.width * 0.7)
+                .padding(.top)
+                .scaleEffect(abs((geo.frame(in: .global).minY * 0.7 + fullView.size.height / 2) / fullView.size.width) > 0.8 ? (geo.frame(in: .global).minY * 0.7 + fullView.size.height / 2) / fullView.size.width : 0.8)
+              Spacer()
+            }
+          }
           
           Text("Launch Date: \(self.mission.formattedLaunchDate)")
             .font(.caption)
@@ -36,7 +44,7 @@ struct MissionView: View {
           
           Text(self.mission.description)
             .padding()
-          
+                    
           ForEach(self.astronauts, id: \.role) { crewMember in
             NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, missions: self.missions)) {
               HStack {
