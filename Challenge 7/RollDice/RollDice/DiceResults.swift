@@ -1,5 +1,5 @@
 //
-//  UserSettings.swift
+//  DiceResults.swift
 //  RollDice
 //
 //  Created by Tadeh Alexani on 6/25/20.
@@ -8,6 +8,10 @@
 
 import SwiftUI
 
-class UserSettings: ObservableObject {
-  @Published var diceSides = 6
+class DiceResults: ObservableObject {
+  @Published var values: [Int]
+  
+  init() {
+    self.values = []
+  }
 }
