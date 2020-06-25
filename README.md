@@ -320,7 +320,7 @@
   * Absolute positioning for SwiftUI views
   * Understanding frames and coordinates inside GeometryReader
   * ScrollView effects using GeometryReader
-* `Day 94 - Project 18, part 3`
+* ✅`Day 94 - Project 18, part 3`
   * Layout and geometry: Wrap up
   * Review for Project 18: Layout and geometry
 * `Day 95 - Milestone: Projects 16-18`
