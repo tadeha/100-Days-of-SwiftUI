@@ -327,7 +327,7 @@
   * What you learned
   * Key points
   * Challenge
-* `Day 96 - Project 19, part 1`
+* ✅`Day 96 - Project 19, part 1`
   * SnowSeeker: Introduction
   * Working with two side by side views in SwiftUI
   * Using alert() and sheet() with optionals
