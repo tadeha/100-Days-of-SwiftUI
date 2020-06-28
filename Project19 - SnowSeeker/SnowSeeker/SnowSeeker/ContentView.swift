@@ -6,10 +6,17 @@
 //  Copyright © 2020 Alexani. All rights reserved.
 //
 
+// Views can be given a height of 0.
+// This is helpful to make spacers work only in a single direction.
+
+// If we place views inside a Group the parent view decides how those views should be laid out.
+// This happens because Group is layout neutral.
+
 import SwiftUI
 
 struct ContentView: View {
   
+  @ObservedObject var favorites = Favorites()
   let resorts: [Resort] = Bundle.main.decode("resorts.json")
   
   var body: some View {
@@ -34,13 +41,22 @@ struct ContentView: View {
             Text("\(resort.runs) runs")
               .foregroundColor(.secondary)
           }
+          .layoutPriority(1)
+          
+          if self.favorites.contains(resort) {
+            Spacer()
+            Image(systemName: "heart.fill")
+              .foregroundColor(.red)
+              .accessibility(label: Text("This is a favorite resort"))
+          }
         }
       }
       .navigationBarTitle("Resorts")
       
       WelcomeView()
     }
-    .phoneOnlyStackNavigationView()
+    .environmentObject(favorites)
+    // .phoneOnlyStackNavigationView()
   }
 }
 
@@ -56,6 +72,6 @@ extension View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ContentView().environmentObject(Favorites())
   }
 }
