@@ -343,3 +343,5 @@
 * ✅`Day 99 - Project 19, part 4`
   * SnowSeeker: Wrap up
   * Review for Project 19: SnowSeeker
+
+![100DaysOfSwiftUI, Certificate](certificate.jpg)
